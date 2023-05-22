@@ -22,6 +22,13 @@ export default function App() {
     })
   }
 
+  const submitHandler = (text) => {
+
+    setTodos(previtems => {
+      return [{text, key: Math.random().toString()}, ...previtems]
+    });
+  }
+
   return (
     <View style={styles.container}>
      {/* {header} */}
@@ -29,7 +36,7 @@ export default function App() {
      <View style={styles.content}>
       {/* {todo form} */}
       <View style={styles.list}>
-        <AddTodo submitHandler={pressHandler}/>
+        <AddTodo submitHandler={submitHandler}/>
       <FlatList 
         data={todos}
         renderItem={({item}) => (
