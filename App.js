@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Button, StyleSheet, Text, View, TouchableHighlight, FlatList } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableHighlight, FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import AddTodo from './components/to_do/AddTodo';
 import Header from './components/to_do/Header'
 import Item from './components/to_do/Item';
@@ -30,6 +30,10 @@ export default function App() {
   }
 
   return (
+    <TouchableWithoutFeedback onPress={ () => {
+      Keyboard.dismiss()
+      
+    }}>
     <View style={styles.container}>
      {/* {header} */}
      <Header />
@@ -46,6 +50,7 @@ export default function App() {
     
      </View>
     </View>
+    </TouchableWithoutFeedback>
     
   );
 }
@@ -57,8 +62,11 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    flex: 1,
   },
   list: {
     marginTop: 20,
+    flex: 1,
+    
   },
 });
